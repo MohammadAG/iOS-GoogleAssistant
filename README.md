@@ -42,3 +42,5 @@ You'll need Xcode and a Mac.
 • Google's SDK sends responses in audio chunks, so it's impossible to know when exactly a response has ended. Due to the (broken?) design of my app, this means that responses might be split into two visual messages.
 
 • Token extension is broken for some reason, you might have to re-login after a while.
+
+• Bubbles are off center (see https://github.com/jessesquires/JSQMessagesViewController/issues/2074)
