@@ -1,0 +1,80 @@
+PODS:
+  - '!ProtoCompiler (3.2.0)':
+    - Protobuf (~> 3.0)
+  - '!ProtoCompiler-gRPCPlugin (1.3.0)':
+    - '!ProtoCompiler (= 3.2.0)'
+    - gRPC-ProtoRPC (= 1.3.0)
+  - AppAuth (0.7.1)
+  - BoringSSL (8.2):
+    - BoringSSL/Implementation (= 8.2)
+    - BoringSSL/Interface (= 8.2)
+  - BoringSSL/Implementation (8.2):
+    - BoringSSL/Interface (= 8.2)
+  - BoringSSL/Interface (8.2)
+  - GoogleAssistant (0.0.1):
+    - '!ProtoCompiler-gRPCPlugin (~> 1.0)'
+    - GoogleAssistant/Messages (= 0.0.1)
+    - GoogleAssistant/Services (= 0.0.1)
+  - GoogleAssistant/Messages (0.0.1):
+    - '!ProtoCompiler-gRPCPlugin (~> 1.0)'
+    - Protobuf
+  - GoogleAssistant/Services (0.0.1):
+    - '!ProtoCompiler-gRPCPlugin (~> 1.0)'
+    - GoogleAssistant/Messages
+    - gRPC-ProtoRPC
+  - gRPC (1.3.0):
+    - gRPC-Core (= 1.3.0)
+    - gRPC-RxLibrary (= 1.3.0)
+  - gRPC-Core (1.3.0):
+    - gRPC-Core/Implementation (= 1.3.0)
+    - gRPC-Core/Interface (= 1.3.0)
+  - gRPC-Core/Implementation (1.3.0):
+    - BoringSSL (~> 8.0)
+    - gRPC-Core/Interface (= 1.3.0)
+  - gRPC-Core/Interface (1.3.0)
+  - gRPC-ProtoRPC (1.3.0):
+    - gRPC (= 1.3.0)
+    - gRPC-RxLibrary (= 1.3.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.3.0)
+  - GTMAppAuth (0.5.0):
+    - AppAuth (~> 0.7.0)
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.9):
+    - GTMSessionFetcher/Full (= 1.1.9)
+  - GTMSessionFetcher/Core (1.1.9)
+  - GTMSessionFetcher/Full (1.1.9):
+    - GTMSessionFetcher/Core (= 1.1.9)
+  - JSQMessagesViewController (7.3.4):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Protobuf (3.2.1)
+
+DEPENDENCIES:
+  - GoogleAssistant (from `./`)
+  - GTMAppAuth
+  - JSQMessagesViewController
+
+EXTERNAL SOURCES:
+  GoogleAssistant:
+    :path: ./
+
+SPEC CHECKSUMS:
+  '!ProtoCompiler': b66c7c0c1d911ad1490dcbfce30e1508739d8309
+  '!ProtoCompiler-gRPCPlugin': 315d12febce749552558cbf93cf8eb4ed894777d
+  AppAuth: c56d352b0d50bb34dbb302d7ba50b20aa6b6ae89
+  BoringSSL: 4135ae556ee2b82ee85477c39ba917a3dd5424ba
+  GoogleAssistant: b76030be235578d62b3c3c162794407641300635
+  gRPC: c0d88992a7ceb367eb54afbabf6acdf36a7fd068
+  gRPC-Core: d34ea5496af8d9640c38a9a6489557b9c7f58673
+  gRPC-ProtoRPC: 9c46d1651690b5853e02f6ebda5aa8007d695193
+  gRPC-RxLibrary: 9bc0b8c97518268573846ec846ed0ce50a8792c0
+  GTMAppAuth: 4b7bdc1fefdf6a49f3d9fc1aa6123f0c7e9b6660
+  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
+
+PODFILE CHECKSUM: 2e0733463e1afd4fc0b7432e16a86ad681b7bf61
+
+COCOAPODS: 1.2.1
