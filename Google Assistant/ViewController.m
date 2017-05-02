@@ -76,6 +76,9 @@ static NSString * const kGoogleKeychainName = @"GoogleOAuth2";
     if (!skipCache) {
         _authorization = [GTMAppAuthFetcherAuthorization authorizationFromKeychainForName:kGoogleKeychainName];
         if (_authorization) {
+            if ([_authorization.authState.lastTokenResponse.accessTokenExpirationDate timeIntervalSinceNow] < 0) {
+                NSLog(@"Token expired");
+            }
             _authorization.authState.stateChangeDelegate = self;
             return;
         }
@@ -223,7 +226,18 @@ static NSString * const kGoogleKeychainName = @"GoogleOAuth2";
     [_notificationFeedbackGenerator notificationOccurred:UINotificationFeedbackTypeWarning];
     
     if (_call == nil) {
-        [self startClientWithToken:_authorization.authState.lastTokenResponse.accessToken];
+        if ([_authorization.authState.lastTokenResponse.accessTokenExpirationDate timeIntervalSinceNow] < 0) {
+            [_authorization.authState setNeedsTokenRefresh];
+            [_authorization.authState performActionWithFreshTokens:^(NSString * _Nullable accessToken, NSString * _Nullable idToken, NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Failed to refresh token: %@", error.localizedDescription);
+                }
+                
+                [self startClientWithToken:accessToken];
+            } additionalRefreshParameters:nil];
+        } else {
+            [self startClientWithToken:_authorization.authState.lastTokenResponse.accessToken];
+        }
     }
     
     // Give the Taptic Engine a chance to work
@@ -256,7 +270,7 @@ static NSString * const kGoogleKeychainName = @"GoogleOAuth2";
 
 - (void)didChangeState:(OIDAuthState *)state {
     NSLog(@"Token updated");
-    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_authorization] forKey:@"authorization"];
+    [GTMAppAuthFetcherAuthorization saveAuthorization:_authorization toKeychainForName:kGoogleKeychainName];
     [self startClientWithToken:state.lastTokenResponse.accessToken];
 }
 
